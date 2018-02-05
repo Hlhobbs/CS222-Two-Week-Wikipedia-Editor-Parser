@@ -29,6 +29,6 @@ public class jsontests {
             array = entryObject.getAsJsonArray("revisions");
         }
         JsonElement revisionAuthor = ((JsonObject) array.get(0)).get("user");
-        Assert.assertEquals("Kind Tennis Fa", revisionAuthor);
+        Assert.assertEquals("Kind Tennis Fan", revisionAuthor);
     }
 }
