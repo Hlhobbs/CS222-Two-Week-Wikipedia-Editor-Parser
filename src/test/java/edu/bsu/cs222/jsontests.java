@@ -36,7 +36,7 @@ public class jsontests {
         //array.get(0).toString();
 
         JsonElement revisionAuthor = ((JsonObject) array.get(0)).get("user");
-         //expected = "Kind Tennis Fan";
-        Assert.assertEquals(((JsonObject) array.get(0)).get("user"), revisionAuthor);
+         String expected = "Kind Tennis Fan";
+        Assert.assertEquals(expected, revisionAuthor);
     }
 }
