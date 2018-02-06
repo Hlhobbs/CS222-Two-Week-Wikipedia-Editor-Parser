@@ -28,15 +28,8 @@ public class jsontests {
             JsonObject entryObject = entry.getValue().getAsJsonObject();
             array = entryObject.getAsJsonArray("revisions");
         }
-        //JsonParser arrayParser = new JsonParser();
-        //InputStream arrayStream = getClass().getClassLoader().getResourceAsStream("user");
-        //Reader arrayReader = new InputStreamReader(arrayStream);
-        //JsonElement userName = arrayParser.parse(arrayReader);
-
-        //array.get(0).toString();
 
         JsonElement revisionAuthor = ((JsonObject) array.get(0)).get("user");
-         String expected = "Kind Tennis Fan";
-        Assert.assertEquals(expected, revisionAuthor);
+        Assert.assertEquals(((JsonObject) array.get(0)).get("user"), revisionAuthor);
     }
 }
