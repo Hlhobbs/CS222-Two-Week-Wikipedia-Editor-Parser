@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -15,19 +16,22 @@ import java.util.Map;
 
 public class RevisionParser {
 
-    public List<Revision> parse (InputStream input){
+    public List<Revision> parse (InputStream input)throws IOException{
         JsonParser RevisionParser = new JsonParser();
         Reader reader = new InputStreamReader(input);
         JsonElement rootElement = RevisionParser.parse(reader);
         JsonObject rootObject = rootElement.getAsJsonObject();
         JsonObject pages = rootObject.getAsJsonObject("query").getAsJsonObject("pages");
-        List<Revision> list = new ArrayList<Revision>();
+        List<Revision> result = new ArrayList<Revision>();
         JsonArray array = null;
         for (Map.Entry<String,JsonElement> entry : pages.entrySet()) {
             JsonObject entryObject = entry.getValue().getAsJsonObject();
             array = entryObject.getAsJsonArray("revisions");
         }
-        return null;
+        for(int i= 0; i<array.size(); i++){
+            result.add(new Revision());
+        }
+        return result;
     }
 
 }
