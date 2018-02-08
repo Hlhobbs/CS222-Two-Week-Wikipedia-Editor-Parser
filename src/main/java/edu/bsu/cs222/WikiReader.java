@@ -1,3 +1,5 @@
+package edu.bsu.cs222;
+
 import java.net.*;
 import java.io.*;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package sample;
+package edu.bsu.cs222.sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("edu.bsu.cs222.sample.fxml"));
         primaryStage.setTitle("Wiki Search");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
