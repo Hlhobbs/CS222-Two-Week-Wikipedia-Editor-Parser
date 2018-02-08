@@ -23,7 +23,6 @@ public class jsontests {
         JsonParser parser = new JsonParser();
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("sample.json");
         Reader reader = new InputStreamReader(inputStream);
-        //Reader reader = new InputStreamReader(inputStream);
         JsonElement rootElement = parser.parse(reader);
         JsonObject rootObject = rootElement.getAsJsonObject();
         JsonObject pages = rootObject.getAsJsonObject("query").getAsJsonObject("pages");
@@ -43,7 +42,6 @@ public class jsontests {
         InputStream input = getClass().getClassLoader().getResourceAsStream("sample.json");
         List<Revision> revisions = parser.parse(input);
         System.out.println(revisions);
-        //Assert.assertNotNull(revisions);
         Assert.assertEquals(4, revisions.size());
     }
 
