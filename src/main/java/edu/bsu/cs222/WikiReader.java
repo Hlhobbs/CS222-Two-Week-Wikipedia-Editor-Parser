@@ -21,7 +21,7 @@ public class WikiReader {
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.connect();
             }
-                catch (Exception exception)
+            catch (Exception exception)
             {
                 System.out.println("No Internet Connection");
             }
@@ -42,14 +42,14 @@ public class WikiReader {
         */
         InternetConnectionTest();
 
-        URL wikiurl = new URL("http://en.wikipedia.org");
+        String SearchTerm = "Soup";
+        URL wikiurl = new URL("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles="+SearchTerm+"&r%20vprop=timestamp|user&rvlimit=30&redirects");
         URLConnection connection = wikiurl.openConnection();
         connection.setRequestProperty("User-Agent","Revision Tracker/0.1 (me@bsu.edu)");
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-        String inputLine;
-        while ((inputLine = in.readLine()) != null)
-            System.out.println(inputLine);
+        RevisionParser read = new RevisionParser();
+        read.parse(connection.getInputStream());
         in.close();
 
     }
