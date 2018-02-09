@@ -19,7 +19,7 @@ import java.util.Map;
 public class jsontests {
 
     @Test
-    public void testReadRevisions() {
+    public void testReadRevisionAuthor() {
         JsonParser parser = new JsonParser();
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("sample.json");
         Reader reader = new InputStreamReader(inputStream);
@@ -32,8 +32,8 @@ public class jsontests {
             array = entryObject.getAsJsonArray("revisions");
 
         }
-        JsonElement revisionAuthor = ((JsonObject) array.get(0)).get("user");
-        Assert.assertEquals(4, array.size());
+        String FirstAuthor = array.get(0).getAsJsonObject().get("user").getAsString();
+        Assert.assertEquals("Kind Tennis Fan", FirstAuthor);
     }
 
     @Test

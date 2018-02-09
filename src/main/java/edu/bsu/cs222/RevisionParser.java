@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RevisionParser {
+    JsonArray array;
 
     public List<Revision> parse (InputStream input)throws IOException{
         JsonParser RevisionParser = new JsonParser();
@@ -34,4 +35,9 @@ public class RevisionParser {
         return result;
     }
 
+   /**
+    * JsonObject Revision (){
+    *
+    * }
+   **/
 }

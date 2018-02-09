@@ -13,32 +13,24 @@ public class WikiReader {
 
     public static void InternetConnectionTest() throws UnknownHostException, IOException
     {
-
         try
         {
-
             try
             {
                 URL url = new URL("http://www.google.com");
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.connect();
             }
-
-            catch (Exception exception)
+                catch (Exception exception)
             {
                 System.out.println("No Internet Connection");
-
             }
-
         }
-
         catch (Exception e)
         {
             e.printStackTrace();
         }
-
     }
-
 
 
     public static void main(String[] args) throws Exception
@@ -52,7 +44,7 @@ public class WikiReader {
 
         URL wikiurl = new URL("http://en.wikipedia.org");
         URLConnection connection = wikiurl.openConnection();
-        connection.setRequestProperty("User-Agent","Revision Tracker/0.1 (mktaylor3@bsu.edu)");
+        connection.setRequestProperty("User-Agent","Revision Tracker/0.1 (me@bsu.edu)");
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
         String inputLine;
@@ -61,6 +53,4 @@ public class WikiReader {
         in.close();
 
     }
-
-
 }
