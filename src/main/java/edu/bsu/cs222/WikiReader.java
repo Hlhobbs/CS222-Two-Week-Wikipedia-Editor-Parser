@@ -1,12 +1,12 @@
 package edu.bsu.cs222;
 
+import jdk.internal.util.xml.impl.Input;
 import java.net.*;
 import java.io.*;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
-//import java.util.Scanner;
 
 
 public class WikiReader {
@@ -35,11 +35,7 @@ public class WikiReader {
 
     public static void main(String[] args) throws Exception
     {
-        /*
-        Scanner scan = new Scanner(System.in);
-        System.out.println("What do you want to search? ");
-        String search = scan.nextLine();
-        */
+
         InternetConnectionTest();
 
         String SearchTerm = "Soup";
@@ -49,8 +45,9 @@ public class WikiReader {
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
         RevisionParser read = new RevisionParser();
-        read.parse(connection.getInputStream());
-        in.close();
+        InputStream input = connection.getInputStream();
 
+        System.out.println(read.parse(input));
+        in.close();
     }
 }

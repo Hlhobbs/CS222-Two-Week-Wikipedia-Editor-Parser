@@ -40,9 +40,18 @@ public class jsontests {
     public void testRevisionParser() throws IOException {
         RevisionParser parser = new RevisionParser();
         InputStream input = getClass().getClassLoader().getResourceAsStream("sample.json");
-        List<Revision> revisions = parser.parse(input);
+        List<Revisions> revisions = parser.parse(input);
         System.out.println(revisions);
         Assert.assertEquals(4, revisions.size());
+    }
+
+    @Test
+    public void testRevisionsAsObject() throws IOException {
+        RevisionParser parser = new RevisionParser();
+        InputStream input = getClass().getClassLoader().getResourceAsStream("sample.json");
+        List<Revisions> revisionsList = parser.parse(input);
+        Assert.assertNotNull(revisionsList);
+
     }
 
 }

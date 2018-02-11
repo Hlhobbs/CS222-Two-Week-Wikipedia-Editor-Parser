@@ -16,28 +16,29 @@ import java.util.Map;
 
 public class RevisionParser {
     JsonArray array;
+        Revisions revisions;
 
-    public List<Revision> parse (InputStream input)throws IOException{
+    public List<Revisions> parse (InputStream input)throws IOException{
         JsonParser RevisionParser = new JsonParser();
         Reader reader = new InputStreamReader(input);
         JsonElement rootElement = RevisionParser.parse(reader);
         JsonObject rootObject = rootElement.getAsJsonObject();
         JsonObject pages = rootObject.getAsJsonObject("query").getAsJsonObject("pages");
-        List<Revision> result = new ArrayList<Revision>();
+        List<Revisions> result = new ArrayList<Revisions>();
         JsonArray array = null;
         for (Map.Entry<String,JsonElement> entry : pages.entrySet()) {
             JsonObject entryObject = entry.getValue().getAsJsonObject();
             array = entryObject.getAsJsonArray("revisions");
         }
+
+
         for(int i= 0; i<array.size(); i++){
-            result.add(new Revision());
+            //JsonObject Revision = array.get(i).getAsJsonObject();
+            Revisions revisions = new Revisions();
+            revisions.id = array.get(i).getAsJsonObject().get("user").getAsString();
+            result.add(revisions);
         }
         return result;
     }
-
-
-     //JsonObject Revision (){
-        //array.;
-     //}
 
 }
