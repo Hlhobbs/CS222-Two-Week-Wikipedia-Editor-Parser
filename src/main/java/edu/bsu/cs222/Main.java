@@ -12,8 +12,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("WikiSearch.fxml"));
-        primaryStage.setTitle("Wiki Search");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Wiki Revisions Search");
+        primaryStage.setScene(new Scene(root, 500, 375));
         primaryStage.show();
     }
 

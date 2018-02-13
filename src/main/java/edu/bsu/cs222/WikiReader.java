@@ -11,7 +11,7 @@ import java.net.UnknownHostException;
 
 public class WikiReader {
 
-    public static void InternetConnectionTest() throws UnknownHostException, IOException
+    private static void InternetConnectionTest() throws UnknownHostException, IOException
     {
         try
         {
@@ -46,7 +46,6 @@ public class WikiReader {
 
         RevisionParser read = new RevisionParser();
         InputStream input = connection.getInputStream();
-
         System.out.println(read.parse(input));
         in.close();
     }
