@@ -1,17 +1,15 @@
 package edu.bsu.cs222;
 
-import jdk.internal.util.xml.impl.Input;
-import java.net.*;
-import java.io.*;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
 
 
+@SuppressWarnings("ALL")
 public class WikiReader {
 
-    private static void InternetConnectionTest() throws UnknownHostException, IOException
+    protected static void InternetConnectionTest() throws UnknownHostException, IOException
     {
         try
         {
@@ -33,20 +31,4 @@ public class WikiReader {
     }
 
 
-    public static void main(String[] args) throws Exception
-    {
-
-        InternetConnectionTest();
-
-        String SearchTerm = "Soup";
-        URL wikiurl = new URL("https://en.wikipedia.org/w/api.php?action=query&format=json&prop=revisions&titles="+SearchTerm+"&r%20vprop=timestamp|user&rvlimit=30&redirects");
-        URLConnection connection = wikiurl.openConnection();
-        connection.setRequestProperty("User-Agent","Revision Tracker/0.1 (me@bsu.edu)");
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-
-        RevisionParser read = new RevisionParser();
-        InputStream input = connection.getInputStream();
-        System.out.println(read.parse(input));
-        in.close();
-    }
 }

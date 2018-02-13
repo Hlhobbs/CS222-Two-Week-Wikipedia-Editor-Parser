@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +39,7 @@ public class jsontests {
     public void testRevisionParser() throws IOException {
         RevisionParser parser = new RevisionParser();
         InputStream input = getClass().getClassLoader().getResourceAsStream("sample.json");
-        List<Revisions> revisions = parser.parse(input);
+        List<Revisions> revisions = parser.parseByMostEdits(input);
         System.out.println(revisions);
         Assert.assertEquals(4, revisions.size());
     }
@@ -49,7 +48,7 @@ public class jsontests {
     public void testRevisionsAsObject() throws IOException {
         RevisionParser parser = new RevisionParser();
         InputStream input = getClass().getClassLoader().getResourceAsStream("sample.json");
-        List<Revisions> revisionsList = parser.parse(input);
+        List<Revisions> revisionsList = parser.parseByRecentEdits(input);
         Assert.assertNotNull(revisionsList);
 
     }
